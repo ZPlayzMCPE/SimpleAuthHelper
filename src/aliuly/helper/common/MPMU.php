@@ -210,7 +210,7 @@ abstract class MPMU {
 			$aliasList = [];
 			foreach($yaml["aliases"] as $alias) {
 				if(strpos($alias,":")!== false) {
-					Server::getInstance()->getLogger()->info("Unable to load alias $alias");
+					$this->owner->getLogger()->info("Unable to load alias $alias");
 					continue;
 				}
 				$aliasList[] = $alias;
