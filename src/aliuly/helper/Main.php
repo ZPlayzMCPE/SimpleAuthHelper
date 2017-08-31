@@ -146,7 +146,7 @@ class Main extends PluginBase implements Listener,CommandExecutor {
 	public function onAuthenticate(PlayerAuthenticateEvent $ev) {
 		if (!$this->cfg["hide-unauth"]) return;
 		$pl = $ev->getPlayer();
-		$this->getServer()->broadcastMessage(TextFormat::YELLOW.mc::_("%1% has just joined", $pl->getDisplayName()));
+		$this->getServer()->broadcastMessage(TextFormat::YELLOW.mc::_("§2%1% §ahas just logged in.", $pl->getDisplayName()));
 		foreach($this->getServer()->getOnlinePlayers() as $online){
 			$online->showPlayer($pl);
 			if ($this->auth->isPlayerAuthenticated($online)) {
@@ -392,7 +392,7 @@ class Main extends PluginBase implements Listener,CommandExecutor {
 		}
 		return true;
 	}
-	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) {
 		if (!$this->auth) {
 			$sender->sendMessage(TextFormat::RED.mc::_("SimpleAuthHelper has been disabled"));
 			$sender->sendMessage(TextFormat::RED.mc::_("SimpleAuth not found!"));
